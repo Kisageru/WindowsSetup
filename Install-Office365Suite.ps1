@@ -79,7 +79,7 @@ Try{
 }
 
 #Run the O365 install
-$ConfigurationXMLFile = "\\vfp02\sortgroup\Scripts\OfficeSetup\OfficeInstall\UserBasedLicencingConfiguration.xml"
+$ConfigurationXMLFile = "$PSScriptroot\UserBasedLicencingConfiguration.xml"
 Try{
   Write-Verbose "Downloading and installing Office 365"
   #$OfficeInstall = Start-Process "$OfficeInstallDownloadPath\Setup.exe" -ArgumentList "/configure $ConfiguratonXMLFile" -Wait -PassThru
