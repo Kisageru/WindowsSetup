@@ -4,7 +4,7 @@ if (-not ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdenti
     Exit
 }
 #Create a log file for debugging
-Start-Transcript -Append C:\Support\Logs\WindowsSetupLog.txt
+Start-Transcript -Append $PSScriptRoot\Logs\WindowsSetupLog.txt
 
 #Set F8 to boot to Safe Mode
 Write-Host -ForegroundColor Green "Setting boot menu to legacy"
@@ -54,7 +54,7 @@ REG ADD  “HKLM\Software\policies\Microsoft\Windows NT\DNSClient” /v ” Enab
 #Disable NBT-NS
 Write-Host -ForegroundColor Green "Disabling NBT-NS"
 $regkey = "HKLM:SYSTEM\CurrentControlSet\services\NetBT\Parameters\Interfaces"
-Get-ChildItem $regkey |ForEach-Object { Set-ItemProperty -Path "$regkey\$($_.pschildname)" -Name NetbiosOptions -Value 2 -Verbose}
+Get-ChildItem $regkey | ForEach-Object {Set-ItemProperty -Path "$regkey\$($_.pschildname)" -Name NetbiosOptions -Value 2 -Verbose}
 
 Write-Host -ForegroundColor Green "Enabling SMB signing as always"
 #Enable SMB signing as 'always'
@@ -185,6 +185,7 @@ $Bloatware = @(
     "*HiddenCity*"
     "*AdobePhotoshopExpress*"
     "*HotspotShieldFreeVPN*"
+    "*McAfee*"
 )
 
     Write-Host  -ForegroundColor Green "Removing Bloatware"
@@ -211,6 +212,9 @@ Start-Process msiexec.exe -Wait -ArgumentList '/I "\\vfp02\software$\_Local inst
 
 Write-Host -ForegroundColor Green "Installing Practice Evolve"
 & \\pesvr01\PracticeEvolveInstall\PEInstall.ps1
+
+Write-Host -ForegroundColor Green "Installing Teams"
+.\TeamsBootStrapper.exe -p
 
 #Close debugging log Transcript
 Stop-Transcript
