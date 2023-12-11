@@ -4,7 +4,7 @@ if (-not ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdenti
     Exit
 }
 #Create a log file for debugging
-Start-Transcript -Append $PSScriptRoot\Logs\WindowsSetupLog.txt
+Start-Transcript -Append C:\Windows-Setup\Logs\WindowsSetupLog.txt
 
 #Set F8 to boot to Safe Mode
 Write-Host -ForegroundColor Green "Setting boot menu to legacy"
