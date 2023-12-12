@@ -157,6 +157,7 @@ $Bloatware = @(
     "*Instagram*"
     "*Facebook*"
     "*McAfee*"
+    "*Camo*"
 
     #Sponsored Windows 10 AppX Apps
     #Add sponsored/featured apps to remove in the "*AppName*" format
@@ -179,13 +180,14 @@ $Bloatware = @(
     "*ACGMediaPlayer*"
     "*Netflix*"
     "*OneCalendar*"
-    "*LinkedInforWindows*"
+    "*LinkedIn*"
     "*HiddenCityMysteryofShadows*"
     "*Hulu*"
     "*HiddenCity*"
     "*AdobePhotoshopExpress*"
     "*HotspotShieldFreeVPN*"
     "*McAfee*"
+    "*Camo*"
 )
 
     Write-Host  -ForegroundColor Green "Removing Bloatware"
